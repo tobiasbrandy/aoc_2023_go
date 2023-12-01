@@ -3,6 +3,7 @@ package main
 import (
 	"flag"
 	"fmt"
+	"github.com/tobiasbrandy/AoC_2022_go/day01"
 	"github.com/tobiasbrandy/AoC_2022_go/internal/errexit"
 	"time"
 )
@@ -22,7 +23,9 @@ func PartsSolver(part1, part2 func(string) any) AoCSolver {
 	}
 }
 
-var DaySolvers = [...]AoCSolver{}
+var DaySolvers = [...]AoCSolver{
+	PartsSolver(day01.Part1, day01.Part2),
+}
 
 func main() {
 	day := flag.Int("day", 0, "AoC challenge day number.")
@@ -41,9 +44,9 @@ func main() {
 	}
 
 	if *test {
-		*inputPath = fmt.Sprintf("day%d/test.txt", *day)
+		*inputPath = fmt.Sprintf("day%02d/test1.txt", *day)
 	} else if *inputPath == "" {
-		*inputPath = fmt.Sprintf("day%d/input.txt", *day)
+		*inputPath = fmt.Sprintf("day%02d/input.txt", *day)
 	}
 
 	t := time.Now()
