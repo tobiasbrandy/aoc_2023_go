@@ -4,6 +4,7 @@ import (
 	"flag"
 	"fmt"
 	"github.com/tobiasbrandy/aoc_2023_go/day01"
+	"github.com/tobiasbrandy/aoc_2023_go/day02"
 	"github.com/tobiasbrandy/aoc_2023_go/internal/errexit"
 	"time"
 )
@@ -25,6 +26,7 @@ func PartsSolver(part1, part2 func(string) any) AoCSolver {
 
 var DaySolvers = [...]AoCSolver{
 	PartsSolver(day01.Part1, day01.Part2),
+	PartsSolver(day02.Part1, day02.Part2),
 }
 
 func main() {
