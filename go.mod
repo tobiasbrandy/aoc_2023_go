@@ -1,4 +1,4 @@
-module github.com/tobiasbrandy/AoC_2022_go
+module github.com/tobiasbrandy/aoc_2023_go
 
 go 1.19
 

@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/tobiasbrandy/AoC_2022_go/internal/hashext"
-	"github.com/tobiasbrandy/AoC_2022_go/internal/mathext"
+	"github.com/tobiasbrandy/aoc_2023_go/internal/hashext"
+	"github.com/tobiasbrandy/aoc_2023_go/internal/mathext"
 )
 
 type D2 struct {

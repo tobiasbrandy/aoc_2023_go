@@ -3,8 +3,8 @@ package main
 import (
 	"flag"
 	"fmt"
-	"github.com/tobiasbrandy/AoC_2022_go/day01"
-	"github.com/tobiasbrandy/AoC_2022_go/internal/errexit"
+	"github.com/tobiasbrandy/aoc_2023_go/day01"
+	"github.com/tobiasbrandy/aoc_2023_go/internal/errexit"
 	"time"
 )
 
@@ -44,7 +44,7 @@ func main() {
 	}
 
 	if *test {
-		*inputPath = fmt.Sprintf("day%02d/test1.txt", *day)
+		*inputPath = fmt.Sprintf("day%02d/test.txt", *day)
 	} else if *inputPath == "" {
 		*inputPath = fmt.Sprintf("day%02d/input.txt", *day)
 	}

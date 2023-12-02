@@ -1,8 +1,8 @@
 package day01
 
 import (
-	"github.com/tobiasbrandy/AoC_2022_go/internal/errexit"
-	"github.com/tobiasbrandy/AoC_2022_go/internal/fileline"
+	"github.com/tobiasbrandy/aoc_2023_go/internal/errexit"
+	"github.com/tobiasbrandy/aoc_2023_go/internal/fileline"
 	"regexp"
 	"strings"
 )

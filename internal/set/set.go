@@ -2,7 +2,7 @@ package set
 
 import (
 	"fmt"
-	"github.com/tobiasbrandy/AoC_2022_go/internal/hashext"
+	"github.com/tobiasbrandy/aoc_2023_go/internal/hashext"
 	"io"
 	"strings"
 )
