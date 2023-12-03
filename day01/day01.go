@@ -3,13 +3,9 @@ package day01
 import (
 	"github.com/tobiasbrandy/aoc_2023_go/internal/errexit"
 	"github.com/tobiasbrandy/aoc_2023_go/internal/fileline"
+	"github.com/tobiasbrandy/aoc_2023_go/internal/stringsext"
 	"regexp"
-	"strings"
 )
-
-func isAsciiDigit(char uint8) bool {
-	return char >= '0' && char <= '9'
-}
 
 func Part1(inputPath string) any {
 	accum := 0
@@ -19,7 +15,7 @@ func Part1(inputPath string) any {
 
 		for i := 0; i < lineLen; i++ {
 			digit := line[i]
-			if isAsciiDigit(digit) {
+			if stringsext.IsAsciiDigit(digit) {
 				accum += int(digit-'0') * 10
 				break
 			}
@@ -27,7 +23,7 @@ func Part1(inputPath string) any {
 
 		for i := lineLen - 1; i >= 0; i-- {
 			digit := line[i]
-			if isAsciiDigit(digit) {
+			if stringsext.IsAsciiDigit(digit) {
 				accum += int(digit - '0')
 				break
 			}
@@ -66,25 +62,16 @@ func parseDigitMatch(match string) uint8 {
 	return 255
 }
 
-func reverse(in string) string {
-	var sb strings.Builder
-	runes := []rune(in)
-	for i := len(runes) - 1; 0 <= i; i-- {
-		sb.WriteRune(runes[i])
-	}
-	return sb.String()
-}
-
 var digitNamesReg = `one|two|three|four|five|six|seven|eight|nine`
 var r = regexp.MustCompile(`[1-9]|` + digitNamesReg)
-var rInv = regexp.MustCompile(`[1-9]|` + reverse(digitNamesReg))
+var rInv = regexp.MustCompile(`[1-9]|` + stringsext.Reverse(digitNamesReg))
 
 func Part2(inputPath string) any {
 	accum := 0
 
 	fileline.ForEach(inputPath, errexit.HandleScanError, func(line string) {
 		accum += int(parseDigitMatch(r.FindString(line))) * 10
-		accum += int(parseDigitMatch(reverse(rInv.FindString(reverse(line)))))
+		accum += int(parseDigitMatch(stringsext.Reverse(rInv.FindString(stringsext.Reverse(line)))))
 	})
 
 	return accum
