@@ -3,10 +3,9 @@ package hashext
 import (
 	"encoding/binary"
 	"fmt"
+	"github.com/tobiasbrandy/aoc_2023_go/internal/constraintsext"
 	"hash/maphash"
 	"io"
-
-	"golang.org/x/exp/constraints"
 )
 
 type Hasher interface {
@@ -14,7 +13,7 @@ type Hasher interface {
 }
 
 type num interface {
-	constraints.Integer | constraints.Float | bool
+	constraintsext.Number | bool
 }
 
 func HashNum[T num](h io.Writer, n T) {

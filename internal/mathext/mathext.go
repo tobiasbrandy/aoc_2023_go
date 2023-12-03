@@ -1,18 +1,17 @@
 package mathext
 
 import (
-	"golang.org/x/exp/constraints"
-	"math"
+	"github.com/tobiasbrandy/aoc_2023_go/internal/constraintsext"
 )
 
-func IntAbs[T constraints.Signed](x T) T {
+func IntAbs[T constraintsext.Number](x T) T {
 	if x < 0 {
 		return -x
 	}
 	return x
 }
 
-func Sign[T constraints.Signed | constraints.Unsigned | constraints.Float](x T) int {
+func Sign[T constraintsext.Number](x T) int {
 	switch {
 	case x > 0:
 		return 1
@@ -23,18 +22,8 @@ func Sign[T constraints.Signed | constraints.Unsigned | constraints.Float](x T) 
 	}
 }
 
-func IntMax(is ...int) int {
-	max := math.MinInt
-	for _, i := range is {
-		if i > max {
-			max = i
-		}
-	}
-	return max
-}
-
-func IntPow(x int, exp uint) int {
-	ret := 1
+func IntPow[T constraintsext.Integer, U constraintsext.Unsigned](x T, exp U) T {
+	var ret T = 1
 
 	for {
 		if exp&1 != 0 {
@@ -51,6 +40,6 @@ func IntPow(x int, exp uint) int {
 }
 
 // Mod is like %, but always returns a positive number or zero
-func Mod(x, m int) int {
+func Mod[T constraintsext.Integer](x, m T) T {
 	return (x%m + m) % m
 }

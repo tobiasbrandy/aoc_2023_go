@@ -13,8 +13,7 @@ func Part1(inputPath string) any {
 	fileline.ForEach(inputPath, errexit.HandleScanError, func(line string) {
 		lineLen := len(line)
 
-		for i := 0; i < lineLen; i++ {
-			digit := line[i]
+		for _, digit := range line {
 			if stringsext.IsAsciiDigit(digit) {
 				accum += int(digit-'0') * 10
 				break
@@ -23,7 +22,7 @@ func Part1(inputPath string) any {
 
 		for i := lineLen - 1; i >= 0; i-- {
 			digit := line[i]
-			if stringsext.IsAsciiDigit(digit) {
+			if stringsext.IsAsciiDigit(rune(digit)) {
 				accum += int(digit - '0')
 				break
 			}
