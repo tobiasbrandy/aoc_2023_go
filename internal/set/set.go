@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/tobiasbrandy/aoc_2023_go/internal/hashext"
 	"io"
+	"maps"
 	"strings"
 )
 
@@ -37,13 +38,7 @@ func (set Set[T]) Len() int {
 }
 
 func (set Set[T]) Copy() Set[T] {
-	ret := New[T](set.Len())
-
-	for e := range set {
-		ret.Add(e)
-	}
-
-	return ret
+	return maps.Clone(set)
 }
 
 func (set Set[T]) Diff(o Set[T]) Set[T] {
@@ -60,6 +55,14 @@ func (set Set[T]) Diff(o Set[T]) Set[T] {
 
 func (set Set[T]) Disjoint(o Set[T]) bool {
 	return set.Diff(o).Len() == set.Len()
+}
+
+func (set Set[T]) Equal(o Set[T]) bool {
+	return maps.Equal(set, o)
+}
+
+func (set Set[T]) Clear() {
+	clear(set)
 }
 
 func (set Set[T]) Hash(h io.Writer) {
